@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+<mule xmlns:tls="http://www.mulesoft.org/schema/mule/tls" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
 	xmlns:spring="http://www.springframework.org/schema/beans" 
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/current/mule-tls.xsd">
     <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
+    <http:request-config name="HTTP_Request_Configuration" host="www.google.com" port="8080" basePath="/finance/getprices" doc:name="HTTP Request Configuration" protocol="HTTPS"/>
     <flow name="tradeFlow">
         <http:listener config-ref="HTTP_Listener_Configuration" path="/" doc:name="HTTP"/>
+        <logger level="INFO" doc:name="Logger"/>
+        <http:request config-ref="HTTP_Request_Configuration" path="/?q=SBIN&amp;x=NSE&amp;i=60&amp;p=1Y&amp;f=d,c,v,o,h,l&amp;df=cpct&amp;auto=1&amp;ts=1472100235046&amp;ei=WWm-V_mePIiRsgHP0oLQDQ" method="GET" doc:name="HTTP" doc:description="https://www.google.com/finance/getprices?q=SBIN&amp;x=NSE&amp;i=60&amp;p=1Y&amp;f=d,c,v,o,h,l&amp;df=cpct&amp;auto=1&amp;ts=1472100235046&amp;ei=WWm-V_mePIiRsgHP0oLQDQ"/>
         <logger level="INFO" doc:name="Logger"/>
     </flow>
 </mule>
