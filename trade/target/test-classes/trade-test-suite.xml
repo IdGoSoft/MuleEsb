@@ -7,7 +7,4 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
     <spring:beans>
         <spring:import resource="classpath:trade.xml"/>
     </spring:beans>
-    <munit:test name="trade-test-suite-tradeFlowTest" description="Test">
-        <flow-ref name="tradeFlow" doc:name="Flow-ref to tradeFlow"/>
-    </munit:test>
 </mule>
