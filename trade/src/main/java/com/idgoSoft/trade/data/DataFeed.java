@@ -1,15 +1,14 @@
 /**
  * 
  */
-package com.idgoSoft.trade.indicators;
+package com.idgoSoft.trade.data;
 
 /**
  * @author srikanth.vaddella
- * 
  *
  */
-public class IndicatorMACD {
-	
+public class DataFeed {
+
 	public String timestamp;
 	public String close;
 	public String high;
@@ -95,4 +94,7 @@ public class IndicatorMACD {
 	
 	
 
+
+	
+	
 }
