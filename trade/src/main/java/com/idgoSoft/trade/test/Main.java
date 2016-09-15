@@ -1,3 +1,5 @@
+package com.idgoSoft.trade.test;
+
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Arrays;
